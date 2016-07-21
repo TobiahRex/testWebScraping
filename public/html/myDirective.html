@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th ng-repeat='(key, value) in list[0]'
+          ng-click='sortBy(key)'>
+          <span>
+            {{key | titlecase}}
+          </span>
+          <span ng-if='key === sortOrder'>
+            ⬇
+          </span>
+          <span ng-if='"-" + key  === sortOrder'>
+            ⬆
+          </span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='item in list | orderBy : sortOrder track by $index'>
+      <td ng-repeat='value in item track by $index' my-draggable>{{value}}</td>
+    </tr>
+  </tbody>
+</table>
